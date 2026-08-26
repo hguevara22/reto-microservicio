@@ -24,6 +24,15 @@
 - `http://localhost:8080/reportes?clienteId=CLI-001&fechaInicio=2026-08-01&fechaFin=2026-08-09`
 - **RabbitMQ Console:** `http://localhost:15672` (guest / guest)
 
+## Documentación Swagger
+
+- Cada microservicio incluye una interfaz Swagger para explorar y probar los endpoints disponibles:
+
+- Customer Service: http://localhost:8081/swagger-ui/index.html 
+
+- Account Service: http://localhost:8080/swagger-ui/index.html 
+
+- Desde estas páginas puedes visualizar los modelos, ejecutar peticiones y validar las respuestas directamente sin usar Postman.
 
 ## Instrucciones para bajar los contenedores
  ```bash
