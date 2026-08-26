@@ -23,3 +23,9 @@
 - **Account Service:** `http://localhost:8080/cuentas`
 - `http://localhost:8080/reportes?clienteId=CLI-001&fechaInicio=2026-08-01&fechaFin=2026-08-09`
 - **RabbitMQ Console:** `http://localhost:15672` (guest / guest)
+
+
+## Instrucciones para bajar los contenedores
+ ```bash
+	docker-compose down
+   ```

@@ -4,7 +4,7 @@ services:
   # Broker de Mensajería
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
+    container_name: rabbitmq_dev
     ports:
       - "5672:5672"    # Puerto AMQP
       - "15672:15672"  # Consola web
