@@ -5,7 +5,6 @@ import java.util.List;
 import com.retotcs.customerservice.dto.ClienteRequestDTO;
 import com.retotcs.customerservice.dto.ClienteResponseDTO;
 import com.retotcs.customerservice.dto.ClienteUpdateRequestDTO;
-import com.retotcs.customerservice.persistence.entities.Cliente;
 
 public interface ClienteService {
 	

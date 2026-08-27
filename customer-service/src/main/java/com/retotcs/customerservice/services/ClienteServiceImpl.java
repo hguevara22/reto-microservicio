@@ -1,11 +1,10 @@
 package com.retotcs.customerservice.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,32 +18,30 @@ import com.retotcs.customerservice.exception.ResourceNotFoundException;
 import com.retotcs.customerservice.persistence.entities.Cliente;
 import com.retotcs.customerservice.persistence.repositories.ClienteRepository;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+@RequiredArgsConstructor
 @Slf4j
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-	@Autowired
-	private ClienteRepository clienteRepository;
-	
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
-
+	private final ClienteRepository clienteRepository;
+	private final RabbitTemplate rabbitTemplate;
+    
 	@Override
 	@Transactional(readOnly = true)
 	public List<ClienteResponseDTO> obtenerClientes() {
-		// TODO Auto-generated method stub
+		
 		return clienteRepository.findAll()
                 .stream()
                 .map(this::mapearAResponseDTO)
-                .collect(Collectors.toList());
+                .toList();
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public ClienteResponseDTO obtenerClientePorId(Long id) {	
-		// TODO Auto-generated method stub
 		Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con el ID: " + id));
         return mapearAResponseDTO(cliente);
@@ -150,7 +147,7 @@ public class ClienteServiceImpl implements ClienteService {
                 // Atributos de Cliente (hijo)
                 .clienteId(clienteDTO.getClienteId())
                 .contrasenia(clienteDTO.getContrasenia())
-                .estado(clienteDTO.getEstado()!= null ? clienteDTO.getEstado() : true)
+                .estado(Optional.ofNullable(clienteDTO.getEstado()).orElse(true))
                 .build();
     }
 	
