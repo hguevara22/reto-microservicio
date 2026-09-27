@@ -10,7 +10,6 @@ public interface ClienteService {
 	
 	List<ClienteResponseDTO> obtenerClientes();
 	ClienteResponseDTO crearCliente(ClienteRequestDTO clienteDTO);
-	
 	ClienteResponseDTO obtenerClientePorId(Long id);
     ClienteResponseDTO modificarCliente(Long id, ClienteUpdateRequestDTO clienteDTO);
     void eliminarCliente(Long id);

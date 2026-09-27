@@ -3,11 +3,13 @@ package com.retotcs.customerservice.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,19 +18,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.retotcs.customerservice.dto.ClienteResponseDTO;
+import com.retotcs.customerservice.exception.ResourceNotFoundException;
 import com.retotcs.customerservice.persistence.entities.Cliente;
 import com.retotcs.customerservice.persistence.repositories.ClienteRepository;
 import com.retotcs.customerservice.services.ClienteServiceImpl;
-import com.retotcs.customerservice.exception.ResourceNotFoundException;
-
-import java.util.Optional;
 
 
 @ExtendWith(MockitoExtension.class) // <--- OBLIGATORIO para inicializar los mocks
-public class ClienteServiceTest {
+class ClienteServiceTest {
 
 	@Mock
 	private ClienteRepository clienteRepository;
@@ -37,7 +36,6 @@ public class ClienteServiceTest {
 	private ClienteServiceImpl clienteService;
 
 	private Cliente cliente;
-	private ClienteResponseDTO clienteResponseDTO;
 
 	@BeforeEach
 	void setUp() {

@@ -17,7 +17,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "persona")
 @Data // Genera getters, setters, equals, hashCode y toString
 @NoArgsConstructor // Constructor vacío
-//@AllArgsConstructor // Constructor con todos los campos
 @SuperBuilder  // Permite que las clases hijas hereden el Builder
 @Inheritance(strategy = InheritanceType.JOINED) // Permite herencia entre entidades
 public class Persona {

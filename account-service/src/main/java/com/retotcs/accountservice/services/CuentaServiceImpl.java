@@ -1,10 +1,9 @@
 package com.retotcs.accountservice.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.retotcs.accountservice.dto.CuentaRequestDTO;
 import com.retotcs.accountservice.dto.CuentaResponseDTO;
@@ -14,29 +13,30 @@ import com.retotcs.accountservice.exception.ResourceNotFoundException;
 import com.retotcs.accountservice.persistence.entities.Cuenta;
 import com.retotcs.accountservice.persistence.repositories.CuentaRepository;
 
-import org.springframework.transaction.annotation.Transactional;
-
 
 @Service
 public class CuentaServiceImpl implements CuentaService{
 	
-	@Autowired
-	private CuentaRepository cuentaRepository;
+	 private final CuentaRepository cuentaRepository;
+
+	 public CuentaServiceImpl(CuentaRepository cuentaRepository) {
+		 this.cuentaRepository = cuentaRepository;
+	 }
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<CuentaResponseDTO> obtenerCuentas() {
-		// TODO Auto-generated method stub
+	
 		return cuentaRepository.findAll()
                 .stream()
                 .map(this::mapearAResponseDTO)
-                .collect(Collectors.toList());
+                .toList();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public CuentaResponseDTO obtenerCuentaPorId(Long id) {
-		// TODO Auto-generated method stub
+		
 		Cuenta cuenta = cuentaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Cuenta no encontrado con el ID: " + id));
         return mapearAResponseDTO(cuenta);
@@ -45,7 +45,7 @@ public class CuentaServiceImpl implements CuentaService{
 	@Override
 	@Transactional(readOnly = true)
 	public CuentaResponseDTO obtenerCuentaPorNumero(String numeroCuenta) {
-		// TODO Auto-generated method stub
+	
 		Cuenta cuenta = cuentaRepository.findByNumeroCuenta(numeroCuenta)
                 .orElseThrow(() -> new ResourceNotFoundException("Cuenta no encontrada con número: " + numeroCuenta));
 		return mapearAResponseDTO(cuenta);
@@ -63,7 +63,7 @@ public class CuentaServiceImpl implements CuentaService{
 	@Override
 	@Transactional
 	public CuentaResponseDTO crearCuenta(CuentaRequestDTO cuentaDTO) {
-		// TODO Auto-generated method stub
+		
 		if (cuentaRepository.existsByNumeroCuenta(cuentaDTO.getNumeroCuenta())) {
             throw new RecursoDuplicadoException("Ya existe una cuenta registrada con el número: " + cuentaDTO.getNumeroCuenta());
         }
@@ -77,7 +77,7 @@ public class CuentaServiceImpl implements CuentaService{
 	@Override
 	@Transactional
 	public CuentaResponseDTO modificarCuenta(Long id, CuentaUpdateRequestDTO cuentaDTO) {
-		// TODO Auto-generated method stub
+	
 		Cuenta cuenta = cuentaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Cuenta no encontrada con id: " + id));
 
@@ -96,7 +96,7 @@ public class CuentaServiceImpl implements CuentaService{
 	@Override
 	@Transactional
 	public void eliminarCuenta(Long id) {
-		// TODO Auto-generated method stub
+	
 		if (!cuentaRepository.existsById(id)) {
             throw new ResourceNotFoundException("Cuenta no encontrada con id: " + id);
         }

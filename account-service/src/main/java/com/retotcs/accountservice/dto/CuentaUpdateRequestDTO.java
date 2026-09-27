@@ -1,7 +1,5 @@
 package com.retotcs.accountservice.dto;
 
-import java.math.BigDecimal;
-
 import com.retotcs.accountservice.persistence.enums.TipoCuenta;
 
 import lombok.AllArgsConstructor;

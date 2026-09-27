@@ -1,6 +1,7 @@
 package com.retotcs.accountservice.exception;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class GlobalExceptionHandler {
         ErrorResponse error = ErrorResponse.builder()
                 .mensaje(ex.getMessage())
                 .codigoEstado(HttpStatus.CONFLICT.value()) // 409 Conflict
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now(ZoneId.systemDefault()))
                 .build();
      
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
@@ -34,7 +35,7 @@ public class GlobalExceptionHandler {
         ErrorResponse error = ErrorResponse.builder()
                 .mensaje(ex.getMessage())
                 .codigoEstado(HttpStatus.BAD_REQUEST.value()) // 400 Bad Request
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now(ZoneId.systemDefault()))
                 .build();
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
@@ -45,7 +46,7 @@ public class GlobalExceptionHandler {
         ErrorResponse error = ErrorResponse.builder()
                 .mensaje(ex.getMessage())
                 .codigoEstado(HttpStatus.NOT_FOUND.value()) // 404 Not Found
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now(ZoneId.systemDefault()))
                 .build();
 
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
@@ -57,7 +58,7 @@ public class GlobalExceptionHandler {
         ErrorResponse error = ErrorResponse.builder()
                 .mensaje("Ocurrió un error interno en el servidor: " + ex.getMessage())
                 .codigoEstado(HttpStatus.INTERNAL_SERVER_ERROR.value()) // 500 Internal Server Error
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now(ZoneId.systemDefault()))
                 .build();
 
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -75,7 +76,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, Object>> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", LocalDateTime.now());
+        body.put("timestamp", LocalDateTime.now(ZoneId.systemDefault()));
         body.put("codigoEstado", HttpStatus.BAD_REQUEST.value()); // 400
         
         // Mensaje amigable al cliente
@@ -94,7 +95,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SaldoNoDisponibleException.class)
     public ResponseEntity<Map<String, Object>> handleSaldoNoDisponible(SaldoNoDisponibleException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", LocalDateTime.now());
+        body.put("timestamp", LocalDateTime.now(ZoneId.systemDefault()));
         body.put("codigoEstado", HttpStatus.BAD_REQUEST.value()); // 400
         body.put("mensaje", ex.getMessage()); // "Saldo no disponible"
 

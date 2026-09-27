@@ -19,12 +19,12 @@ public class RabbitMQConfig {
     public static final String ROUTING_KEY = "customer.created.routingKey"; // mismo routing key
 
     @Bean
-    public Queue queue() {
+    public Queue customerQueue() {
         return new Queue(QUEUE, true);
     }
 
     @Bean
-    public TopicExchange exchange() {
+    public TopicExchange customerExchange() {
         return new TopicExchange(EXCHANGE);
     }
 

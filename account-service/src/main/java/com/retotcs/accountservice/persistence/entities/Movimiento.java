@@ -3,7 +3,6 @@ package com.retotcs.accountservice.persistence.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.retotcs.accountservice.persistence.enums.TipoCuenta;
 import com.retotcs.accountservice.persistence.enums.TipoMovimiento;
 
 import jakarta.persistence.Column;
