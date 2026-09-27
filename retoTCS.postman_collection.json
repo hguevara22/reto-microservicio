@@ -35,7 +35,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n    \"nombre\": \"Juan Osorio 2\",\r\n    \"genero\": \"Masculino\",\r\n    \"edad\": 45,\r\n    \"identificacion\": \"1855221111\",\r\n    \"direccion\": \"13 junio y Equinoccial\",\r\n    \"telefono\": \"0998874562\",\r\n    \"clienteId\": \"CLI_004\",\r\n    \"contrasenia\": \"75545\",\r\n    \"estado\": true\r\n}\r\n\r\n\r\n",
+							"raw": " {\r\n    \"nombre\": \"Juan Osorio\",\r\n    \"genero\": \"Masculino\",\r\n    \"edad\": 45,\r\n    \"identificacion\": \"1822556569\",\r\n    \"direccion\": \"13 junio y Equinoccial\",\r\n    \"telefono\": \"098874587\",\r\n    \"clienteId\": \"CLI_001\",\r\n    \"contrasenia\": \"1245\",\r\n    \"estado\": true\r\n}\r\n\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,7 +62,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/clientes/107",
+							"raw": "http://localhost:8081/clientes/157",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -70,7 +70,7 @@
 							"port": "8081",
 							"path": [
 								"clientes",
-								"107"
+								"157"
 							]
 						}
 					},
@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"nombre\": \"Juan Oso\"\r\n}",
+							"raw": "{\r\n\r\n \"genero\": \"Femenino\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +91,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/clientes/107",
+							"raw": "http://localhost:8081/clientes/158",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -99,7 +99,7 @@
 							"port": "8081",
 							"path": [
 								"clientes",
-								"107"
+								"158"
 							]
 						}
 					},
@@ -156,7 +156,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"numeroCuenta\": \"478778\",\r\n  \"tipoCuenta\": \"AHORRO\",\r\n  \"saldoInicial\": 100.00,\r\n  \"estado\": true,\r\n  \"clienteId\": \"CLI-003\"\r\n}",
+							"raw": "{\r\n  \"numeroCuenta\": \"585545\",\r\n  \"tipoCuenta\": \"CORRIENTE\",\r\n  \"saldoInicial\": 100.00,\r\n  \"estado\": true,\r\n  \"clienteId\": \"CLI-002\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -183,7 +183,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/cuentas/52",
+							"raw": "http://localhost:8080/cuentas/105",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -191,7 +191,7 @@
 							"port": "8080",
 							"path": [
 								"cuentas",
-								"52"
+								"105"
 							]
 						}
 					},
@@ -204,7 +204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"tipoCuenta\": \"AHORRO\",\r\n  \"estado\": true\r\n}",
+							"raw": "{\r\n    \"numeroCuenta\": \"585545\",\r\n  \"tipoCuenta\": \"AHORRO\",\r\n  \"estado\": true\r\n\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -212,7 +212,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/cuentas/52",
+							"raw": "http://localhost:8080/cuentas/105",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -220,7 +220,7 @@
 							"port": "8080",
 							"path": [
 								"cuentas",
-								"52"
+								"105"
 							]
 						}
 					},
@@ -339,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"numeroCuenta\": \"478758\",\r\n    \"valor\": 56\r\n\r\n}",
+							"raw": "{\r\n  \"numeroCuenta\": \"896170\",\r\n    \"valor\": -60\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -411,7 +411,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/reportes?clienteId=CLI-001&fechaInicio=2026-08-01&fechaFin=2026-08-09",
+							"raw": "http://localhost:8080/reportes?clienteId=CLI_001&fechaInicio=2026-09-25&fechaFin=2026-09-27",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -423,15 +423,15 @@
 							"query": [
 								{
 									"key": "clienteId",
-									"value": "CLI-001"
+									"value": "CLI_001"
 								},
 								{
 									"key": "fechaInicio",
-									"value": "2026-08-01"
+									"value": "2026-09-25"
 								},
 								{
 									"key": "fechaFin",
-									"value": "2026-08-09"
+									"value": "2026-09-27"
 								}
 							]
 						}
